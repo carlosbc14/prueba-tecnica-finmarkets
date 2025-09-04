@@ -16,3 +16,6 @@
 # local env files
 .env
 .env*.local
+
+# sqlite database
+/prisma/dev.db
