@@ -1,0 +1,30 @@
+{
+  "name": "prueba-tecnica-finmarkets",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/.",
+    "start": "node src/.",
+    "lint": "eslint src/.",
+    "lint:fix": "eslint src/. --fix",
+    "format": "prettier --write src/.",
+    "format:check": "prettier --check src/."
+  },
+  "keywords": [],
+  "author": "Carlos Badilla",
+  "license": "ISC",
+  "description": "Resolución de prueba técnica para el puesto de Desarrollador Back-end Node.js Express.js en Finmarkets",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.34.0",
+    "eslint": "^9.34.0",
+    "eslint-config-prettier": "^10.1.8",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
+  }
+}

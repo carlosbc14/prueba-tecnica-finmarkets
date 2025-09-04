@@ -1,0 +1,18 @@
+# vscode setting
+/.vscode
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/dist
+/build
+
+# local env files
+.env
+.env*.local
