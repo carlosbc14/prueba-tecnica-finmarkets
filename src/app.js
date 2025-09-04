@@ -1,6 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 
+import taskRouter from './routes/task.routes.js'
+
 const app = express()
 
 app.use(cors())
@@ -14,5 +16,6 @@ app.get('/api', (_req, res) =>
     version: '1.0.0',
   })
 )
+app.use('/api/tasks', taskRouter)
 
 export default app
