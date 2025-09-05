@@ -1,4 +1,5 @@
 import db from '../database.js'
+import { io } from '../app.js'
 
 export const getTasks = async (_req, res) => {
   try {
@@ -44,6 +45,8 @@ export const createTask = async (req, res) => {
       data: { titulo, descripcion },
     })
 
+    io.emit('newTask', task)
+
     return res.status(201).json({
       message: 'Task saved successfully',
       data: task,
@@ -73,6 +76,8 @@ export const updateTaskById = async (req, res) => {
       where: { id },
     })
 
+    io.emit('taskUpdated', { id: task.id, status: task.status })
+
     return res.json({
       message: 'Task updated successfully',
       data: taskUpdated,
@@ -97,6 +102,8 @@ export const deleteTaskById = async (req, res) => {
     }
 
     await db.task.delete({ where: { id } })
+
+    io.emit('taskDeleted', { id })
 
     return res.json({
       message: 'Task deleted successfully',

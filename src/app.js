@@ -1,5 +1,7 @@
 import express from 'express'
 import cors from 'cors'
+import { Server } from 'socket.io'
+import http from 'http'
 
 import taskRouter from './routes/task.routes.js'
 
@@ -18,4 +20,20 @@ app.get('/api', (_req, res) =>
 )
 app.use('/api/tasks', taskRouter)
 
-export default app
+const server = http.createServer(app)
+
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  },
+})
+
+io.on('connection', (socket) => {
+  console.log('Cliente conectado:', socket.id)
+
+  socket.on('disconnect', () => {
+    console.log('Cliente desconectado:', socket.id)
+  })
+})
+
+export { server, io }
